@@ -1,0 +1,23 @@
+# Python / venv
+.venv/
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local data and outputs
+on-the-fly-nvs/data/
+on-the-fly-nvs/results/
+results/
+data/
+outputs/
+renders/
+*.ply
+*.mp4
+*.csv
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/

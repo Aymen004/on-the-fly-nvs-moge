@@ -1,0 +1,8 @@
+numpy>=1.24
+pandas>=2.0
+tqdm>=4.66
+opencv-python-headless>=4.9
+scikit-image>=0.22
+lpips>=0.1.4
+plyfile>=1.0
+# torch/torchvision should be installed per CUDA compatibility; not pinned here

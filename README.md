@@ -4,7 +4,7 @@ Replace the fragile multi‑view geometric bootstrap in On‑the‑fly 3DGS with
 
 This repo provides portable notebooks (Colab or local) covering end‑to‑end: one‑shot init → incremental training → evaluation vs the original baseline.
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/1c7dd79a-d525-4d29-8993-4e41062cf999" alt="image 1" width="60%" />
+  <img src="https://github.com/user-attachments/assets/1c7dd79a-d525-4d29-8993-4e41062cf999" alt="image 1" width="55%" />
   <img src="https://github.com/user-attachments/assets/b8d6873c-5e32-4d96-8713-4e70260080b9" alt="image 2" width="45%" />
 </p>
 

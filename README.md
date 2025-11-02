@@ -194,12 +194,27 @@ Gain            -23.8s     +1.17 dB
 
 ### Qualitative and global performance comparison (Apartment 1)
 
-| **Baseline** | **Our Approach (MoGE)** |
-|:-------------:|:----------------------:|
-| <img src="https://github.com/user-attachments/assets/225f5f7b-d68f-4aca-9829-f37c32001201" width="420"/> <br/><sub><em>375.46 s | PSNR 20.74 dB</em></sub> | ![Image1](https://github.com/user-attachments/assets/54aec8c9-d2d3-4b61-9fe2-e59923157ae6) <br/><sub><em>351.66 s | PSNR 21.91 dB</em></sub> |
+<table>
+  <tr>
+    <th align="center">Baseline</th>
+    <th align="center">Our Approach (MoGE)</th>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/225f5f7b-d68f-4aca-9829-f37c32001201" width="420" />
+      <br/>
+      <sub><em>375.46 s · PSNR 20.74 dB</em></sub>
+    </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/54aec8c9-d2d3-4b61-9fe2-e59923157ae6" width="420" />
+      <br/>
+      <sub><em>351.66 s · PSNR 21.91 dB</em></sub>
+    </td>
+  </tr>
+</table>
 
 <p align="center">
-  <em>Qualitative and timing comparison on Apartment 1. Our method (right) produces higher-quality renderings while being faster than the original method (left).</em>
+  <em>Our method (right) produces higher-quality renderings while being faster than the original method (left).</em>
 </p>
 
 ---
@@ -208,8 +223,6 @@ Gain            -23.8s     +1.17 dB
 ## Video comparison (Baseline vs MoGE)
 
 Side-by-side rendered-path video showing both methods simultaneously.  
-**Left = Baseline | Right = MoGE**
-
 <div align="center">
   <video src="https://github.com/user-attachments/assets/886cacf0-79ee-4486-939d-757ff16d86d2"
          controls
@@ -220,10 +233,6 @@ Side-by-side rendered-path video showing both methods simultaneously.
   <br/>
   <sub><em>Video 1 – Baseline (left) vs MoGE (right) on Apartment 1.</em></sub>
   <br/>
-  <sub>
-    If inline playback is not supported, use the direct link:  
-    <a href="https://github.com/user-attachments/assets/886cacf0-79ee-4486-939d-757ff16d86d2">comparison_apartment1.mp4</a>
-  </sub>
 </div>
 
 > **Note:** The slight noise visible at the end of the scene arises from the intrinsic characteristics of the captured environment, not from the rendering pipeline.

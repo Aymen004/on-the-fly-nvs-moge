@@ -230,9 +230,7 @@ Side-by-side rendered-path video showing both methods simultaneously.
          muted
          loop>
   </video>
-  <br/>
-  <sub><em>Video 1 – Baseline (left) vs MoGE (right) on Apartment 1.</em></sub>
-  <br/>
+   <p align="center"><em>Original 3dgs (left) vs our MoGE approach (right) on Apartment 1.</em></p>
 </div>
 
 > **Note:** The slight noise visible at the end of the scene arises from the intrinsic characteristics of the captured environment, not from the rendering pipeline.

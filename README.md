@@ -2,7 +2,7 @@
 
 Replace the fragile multi‑view geometric bootstrap in On‑the‑fly 3DGS with a robust single‑image generative initialization using MoGE‑2, then keep the official incremental pipeline unchanged for the rest of the sequence.
 
-This repo provides 5 portable notebooks (Colab or local) covering end‑to‑end: one‑shot init → incremental training → paper‑style evaluation vs the original baseline.
+This repo provides portable notebooks (Colab or local) covering end‑to‑end: one‑shot init → incremental training → paper‑style evaluation vs the original baseline.
 
 ---
 
@@ -10,11 +10,10 @@ This repo provides 5 portable notebooks (Colab or local) covering end‑to‑end
 
 | Notebook | Purpose |
 |---|---|
-| `3dgsMoge_ETAPE1.ipynb` | Step 1: one‑shot init. Run MoGE‑2 on a single image to get a dense colored point cloud, then convert it to a 3DGS `.ply` (GraphDeco/SuperSplat layout). |
-| `3dgsMoge_ETAPE2.ipynb` | Step 2: incremental reconstruction. Inject the init 3DGS into `on-the-fly-nvs`, then run pose tracking, LoG sampling, joint optimization, and rendering. |
-| `Onthefly_Basic.ipynb` | Baseline (paper). Run the original bootstrap (~first 8 frames) and then the standard incremental pipeline. |
-| `PSNR_compare.ipynb` | Evaluation (MoGE init). Compute PSNR/SSIM/LPIPS on a held‑out split (1 every 30, `--test_hold 30`) for the model trained from the MoGE initialization. Exports CSV + plots (boxplots, Δ‑PSNR histogram). |
-| `PSNR_compareBasic.ipynb` | Evaluation (baseline). Same protocol, same split, same metrics — trained with the original bootstrap — enabling apples‑to‑apples comparison. |
+| `pipeline/3dgsMoge_ETAPE1.ipynb` | Stage 1 only: one‑shot init. Run MoGE‑2 on a single image to get a dense colored point cloud, then convert it to a 3DGS `.ply` (GraphDeco/SuperSplat layout). |
+| `pipeline/3dgsMoge_ETAPE2.ipynb` | Stage 2 only: incremental reconstruction. Inject the init 3DGS into `on-the-fly-nvs`, then run pose tracking, LoG sampling, joint optimization, and rendering. |
+| `comparison/PSNR_compare.ipynb` | Evaluation (MoGE init). Compute PSNR/SSIM/LPIPS on a held‑out split (1 every 30, `--test_hold 30`) for the model trained from the MoGE initialization. Exports CSV + plots (boxplots, Δ‑PSNR histogram). |
+| `comparison/PSNR_compareBasic.ipynb` | Evaluation (baseline). Same protocol, same split, same metrics — trained with the original bootstrap — enabling apples‑to‑apples comparison. |
 
 Why two evaluation notebooks? To separate artifacts (CSVs/plots) under each run while enforcing an identical protocol.
 
@@ -73,14 +72,14 @@ Scale alignment (optional). If needed, a quick two‑view relation (e.g., LoFTR 
 
 ## Recommended order of execution
 
-### 1) `3dgsMoge_ETAPE1.ipynb` — produce the init 3DGS
+### 1) `pipeline/3dgsMoge_ETAPE1.ipynb` — produce the init 3DGS
 1) Provide one image (sharp, textured, mid‑sequence works well).
 2) The notebook runs MoGE‑2, extracts the cloud, and writes a `.ply` 3DGS (`3dgs_MoGe.ply`) with the required fields.
 3) Optional: preview with SuperSplat/GraphDeco.
 
 Main output: `3dgs_MoGe.ply`
 
-### 2) `3dgsMoge_ETAPE2.ipynb` — incremental training from the init
+### 2) `pipeline/3dgsMoge_ETAPE2.ipynb` — incremental training from the init
 1) Clone `on-the-fly-nvs` and install dependencies.
 2) Place your images under `data/my_scene/images/`.
 3) Copy the init 3DGS to the canonical train location: `results/<model>/point_cloud/point_cloud.ply` so training picks it up and skips the built‑in bootstrap.
@@ -90,10 +89,7 @@ Outputs: `results/<model>/…` (checkpoints, `colmap/`, `rendered_path.mp4`, and
 
 Why that path? GraphDeco persists the current cloud at `results/<model>/point_cloud/point_cloud.ply`. Placing our `.ply` there before training makes the run naturally start from the MoGE scene.
 
-### 3) `Onthefly_Basic.ipynb` — baseline
-Runs the original pipeline: bootstrap (~8 frames) → incremental. Produces its own `results/<baseline>/test_images/` for fair comparison.
-
-### 4) `PSNR_compare.ipynb` & `PSNR_compareBasic.ipynb` — paper‑style evaluation
+### 3) `comparison/PSNR_compare.ipynb` & `comparison/PSNR_compareBasic.ipynb` — paper‑style evaluation
 - Split: `--test_hold 30` ⇒ approx. 1 out of 30 images held out, rendered to `results/<…>/test_images/` with the same filename as in `data/<…>/test/`.
 - Metrics:
   - PSNR on sRGB [0,1]: `PSNR = -10·log10(MSE)`.
@@ -257,19 +253,8 @@ python train.py -s data/my_scene -m results/scene --viewer_mode none --downsampl
 ```
 
 Evaluation:
-- Open `PSNR_compare.ipynb` or `PSNR_compareBasic.ipynb` and run all cells.
+- Open `comparison/PSNR_compare.ipynb` or `comparison/PSNR_compareBasic.ipynb` and run all cells.
 - CSV is written to `results/scene/metrics_testhold_30.csv` by default.
-
----
-
-## Repo structure
-
-- `3dgsMoge_ETAPE1.ipynb` — MoGE‑2 to 3DGS init (PLY).
-- `3dgsMoge_ETAPE2.ipynb` — start on‑the‑fly from the init PLY.
-- `Onthefly_Basic.ipynb` — original baseline pipeline.
-- `PSNR_compare.ipynb` — metrics for MoGE‑init run.
-- `PSNR_compareBasic.ipynb` — metrics for baseline run.
-- `images/` — scene frames used in our experiments (Apartment 1 from the Stanford “Relocalization” dataset, CC BY‑NC‑SA 4.0). You can copy/symlink this folder to `on-the-fly-nvs/data/my_scene/images` to reproduce our runs.
 
 ---
 

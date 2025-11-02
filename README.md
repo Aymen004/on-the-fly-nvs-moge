@@ -188,8 +188,7 @@ Gain            -23.8s     +1.17 dB
 
 ### Step 1 pipeline: from single image to initialized 3DGS
 
-<!-- Replace the URL below with your GitHub user‑attachments asset URL -->
-![Step 1 pipeline: from the input image (left) to the initialized 3DGS scene (right) via MoGE.](https://github.com/user-attachments/assets/REPLACE_WITH_PATH3DGS_ASSET_ID)
+![Step 1 pipeline: from the input image (left) to the initialized 3DGS scene (right) via MoGE.](<img width="1323" height="361" alt="image" src="https://github.com/user-attachments/assets/3ac4624b-f9c8-4f63-bc7d-cbf1ddfe1d61" />)
 
 <p align="center"><em>Figure 1. Step 1 pipeline: from the input image (left) to the initialized 3DGS scene (right) via MoGE.</em></p>
 
@@ -197,11 +196,11 @@ Gain            -23.8s     +1.17 dB
 
 | Baseline | Our Approach (MoGE) |
 |---|---|
-| ![Baseline](https://github.com/user-attachments/assets/REPLACE_WITH_BASELINE_IMG_ASSET_ID) <br/><sub><em>375.46s, PSNR 20.74 dB</em></sub> | ![MoGE](https://github.com/user-attachments/assets/REPLACE_WITH_MOGE_IMG_ASSET_ID) <br/><sub><em>351.66s, PSNR 21.91 dB</em></sub> |
+| ![Baseline](<img width="857" height="640" alt="image" src="https://github.com/user-attachments/assets/869662a5-3481-4e63-bfc3-47d5d62b29f6" />
+) <br/><sub><em>375.46s, PSNR 20.74 dB</em></sub> | ![MoGE](<img width="857" height="642" alt="image" src="https://github.com/user-attachments/assets/a4a1c6c7-4f16-4f91-8aee-defe10c6142a" />
+) <br/><sub><em>351.66s, PSNR 21.91 dB</em></sub> |
 
 <p align="center"><em>Figure 2. Qualitative and timing comparison on Apartment 1. Our method (right) produces higher‑quality renderings while being faster than the original method (left).</em></p>
-
-> Tip: Paste your uploaded GitHub asset URLs (user‑attachments) in place of the placeholders above.
 
 ---
 

@@ -1,6 +1,6 @@
 # Bootstrap‑Free On‑the‑fly 3D Gaussian Splatting (MoGE‑init)
 
-Replace the fragile multi‑view geometric bootstrap in On‑the‑fly 3DGS with a robust single‑image generative initialization using MoGE‑2, then keep the official incremental pipeline unchanged for the rest of the sequence.
+Replacing the fragile multi‑view geometric bootstrap in On‑the‑fly 3DGS with a robust single‑image generative initialization using MoGE‑2, keeping the official incremental pipeline unchanged for the rest of the sequence.
 
 This repo provides portable notebooks (Colab or local) covering end‑to‑end: one‑shot init → incremental training → evaluation vs the original baseline.
 <p align="center">
@@ -27,7 +27,7 @@ Why two evaluation notebooks? To separate artifacts (CSVs/plots) under each run 
 
 ## Innovation: Bootstrap‑free On‑the‑fly 3DGS from a Single Image (MoGE‑init)
 
-Elevator pitch — We remove the fragile geometric bootstrap in On‑the‑fly 3DGS and replace it with a robust, single‑image generative initialization using MoGE‑2. The rest of the incremental pipeline stays intact. Result: faster starts and higher quality with a minimal, plug‑in‑place change.
+ We remove the fragile geometric bootstrap in On‑the‑fly 3DGS and replace it with a robust, single‑image generative initialization using MoGE‑2. The rest of the incremental pipeline stays intact. Result: faster starts and higher quality with a minimal, plug‑in‑place change.
 
 Key outcomes (Apartment 1):
 - −6.3% total time (375.46s → 351.66s)
